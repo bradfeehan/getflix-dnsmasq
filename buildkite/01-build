@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Include common variables
+. "$(dirname ${BASH_SOURCE[0]})/common.bash"
+
+buildkite-header "Building Docker image"
+buildkite-run docker build --tag=bradfeehan/getflix-dnsmasq:latest "$ROOT"
+
+buildkite-header-prompt "docker push bradfeehan/getflix-dnsmasq:latest"
+docker push bradfeehan/getflix-dnsmasq:latest
