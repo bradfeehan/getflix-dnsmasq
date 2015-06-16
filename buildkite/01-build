@@ -12,5 +12,5 @@ fi
 buildkite-header "Building Docker image"
 (cd "$ROOT"; buildkite-run make image)
 
-buildkite-header-prompt "Pushing image to Docker registry"
+buildkite-header "Pushing image to Docker registry"
 (cd "$ROOT"; buildkite-run make push)
