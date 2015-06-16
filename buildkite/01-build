@@ -3,6 +3,12 @@
 # Include common variables
 . "$(dirname ${BASH_SOURCE[0]})/common.bash"
 
+# Install Make if it's missing
+if ! which make > /dev/null 2>&1; then
+  buildkite-header "Installing Make"
+  buildkite-run apk add --update make
+fi
+
 buildkite-header "Building Docker image"
 (cd "$ROOT"; buildkite-run make image)
 
